@@ -1,0 +1,23 @@
+@app.route('/')
+def index():
+  return '''<h1>Adopt a Pet!</h1>
+  <p>Browse through the links below to find your new furry friend:</p>
+  <ul>
+    <li><a href="/animals/dogs">Dogs</a></li>
+    <li><a href="/animals/cats">Cats</a></li>
+    <li><a href="/animals/rabbits">Rabbits</a></li>
+  </ul>'''
+  
+  
+  
+  
+  @app.route('/animals/<pet_type>')
+def animals(pet_type):
+  html = f'<h1>List of {pet_type} </h1>'
+  for pet_type, val in pets.items():
+    for v in val:
+       html +=  f'''<ul>
+       <li>{v["name"]}</li>
+       </ul>'''
+      
+  return html
